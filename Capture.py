@@ -59,11 +59,7 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     print(str(msg.payload))
-    command = str(msg.payload)
-    if command=="snap_pic":
-        dc = DroneCamera()
-        img_src = dc.snap_pic_from_web_console()
-        print(command)
+    
 
     
 
