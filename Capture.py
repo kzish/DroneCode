@@ -3,6 +3,7 @@ import time
 from os import system
 from time import sleep
 import paho.mqtt.client as mqtt
+import uuid
 
 
 class DroneCamera():
@@ -16,6 +17,15 @@ class DroneCamera():
                 print('Captured %s' % filename)
             # Capture one image a minute
             time.sleep(time_lenght)
+
+    def snap_pic_from_web_console(self,cam_res=(1280, 720) ):
+            with picamera.PiCamera() as camera:
+                camera.resolution = cam_res
+                time.sleep(1) # Camera warm-up time
+                filename = uuid.uuid4()+".jpg"
+                camera.capture(filename)
+                print('Captured %s' % filename)
+                return filename
             
     def gif(self,image_count,time_lenght,cam_res=(1280, 720)):
         self.capture(image_count,time_lenght, cam_res )
@@ -49,6 +59,11 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
+    command = str(msg.payload)
+    if command=="snap_pic":
+        image_file = DroneCamera().snap_pic_from_web_console()
+
+    
 
 
 client = mqtt.Client()
