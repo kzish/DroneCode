@@ -2,7 +2,9 @@ import picamera#for the pi camera
 import paho.mqtt.client as mqtt #for the mqtt client
 import requests #for uploading the image
 import os #for handling files
+import time#for the sleep method
 
+#change url for both mqtt and requests
 
 
 
@@ -13,13 +15,14 @@ def snap_pic_from_web_console():
         camera.capture("newpic.jpg")
         print("picture taken!")
         #now send the picture to the server
-        url = 'http://192.168.138.1:5567/Admin/upload_image_from_pi'
+        url = 'http://192.168.138.1:5567/api/upload_image_from_pi'
         files = {'file': open('newpic.jpg', 'rb')}
         r = requests.post(url, files=files)
-        print(r)
+        print(r.text)#show the results
+        time.sleep(60)#wait for the response
         #now delete the image
-        #os.remove("newpic.jpg")
-        #print("picture deleted!")
+        os.remove("newpic.jpg")
+        print("picture deleted!")
 
 
 
