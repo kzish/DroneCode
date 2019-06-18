@@ -19,7 +19,7 @@ def snap_pic_from_web_console():
         files = {'file': open('newpic.jpg', 'rb')}
         r = requests.post(url, files=files)
         print(r.text)#show the results
-        time.sleep(60)#wait for the response
+        time.sleep(2)#wait for the response before deleting the image
         #now delete the image
         os.remove("newpic.jpg")
         print("picture deleted!")
