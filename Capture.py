@@ -18,8 +18,8 @@ def snap_pic_from_web_console():
         r = requests.post(url, files=files)
         print(r)
         #now delete the image
-        os.remove("newpic.jpg")
-        print("picture deleted!")
+        #os.remove("newpic.jpg")
+        #print("picture deleted!")
 
 
 
