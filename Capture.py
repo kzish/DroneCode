@@ -16,6 +16,7 @@ def snap_pic_from_web_console():
         url = 'http://192.168.138.1:5567/Admin/upload_image_from_pi'
         files = {'file': open('newpic.jpg', 'rb')}
         r = requests.post(url, files=files)
+        print(r)
         #now delete the image
         os.remove("newpic.jpg")
         print("picture deleted!")
