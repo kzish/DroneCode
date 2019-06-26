@@ -3,24 +3,32 @@ import time
 from os import system
 from time import sleep
 import paho.mqtt.client as mqtt
+import json
 
 channel           = 17 # the selected gpio data pin
-topic_to_server   = "sensor_data_to_server"# when sending data to the server
+topic_to_server   = "drone_web_console_server"# when sending data to the server
 topic_from_server = "server_data_to_seismic_1"# when recieving data from the server to seismic sensor 1
 server_url        = "192.168.138.1"
 server_port       = 1883
 
 # method for seismic sensor
 def seismic_callback(channel):
+	#make json object to send
+		x={
+		"type":"seismic_sensor_reading"
+		"value":"100"
+		}
 	if GPIO.input(channel):
-		client.publish(topic_to_server, "seismic_sensor_1_detected")
+		
+		client.publish(topic_to_server, json.dumps(x))
 	else:
-		client.publish(topic_to_server, "seismic_sensor_1_detected")
+		client.publish(topic_to_server, json.dumps(x))
 
 # mqtt on connect callback
 def on_connect(client, userdata, flags, rc):
     print("Mqtt connected with result code "+str(rc))
     client.subscribe(topic_from_server)#listen for messages from the server
+    print("mqtt connected")
 
 # mqtt onmessage recieved
 def on_message(client, userdata, msg):
