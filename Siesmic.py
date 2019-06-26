@@ -14,10 +14,10 @@ server_port       = 1883
 # method for seismic sensor
 def seismic_callback(channel):
 	#make json object to send
-		x={
+	x={
 		"type":"seismic_sensor_reading",
 		"value":"100"
-		}
+	  }
 	if GPIO.input(channel):
 		
 		client.publish(topic_to_server, json.dumps(x))
