@@ -15,7 +15,7 @@ server_port       = 1883
 def seismic_callback(channel):
 	#make json object to send
 		x={
-		"type":"seismic_sensor_reading"
+		"type":"seismic_sensor_reading",
 		"value":"100"
 		}
 	if GPIO.input(channel):
