@@ -41,7 +41,7 @@ def on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))# display the message from the server
 
 
-#seismic sensor setup
+#seismic sensor gpio setup
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(channel,GPIO.IN)
 GPIO.add_event_detect(channel,GPIO.BOTH,bouncetime=300)
