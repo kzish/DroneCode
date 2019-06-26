@@ -13,16 +13,22 @@ server_port       = 1883
 
 # method for seismic sensor
 def seismic_callback(channel):
-	#make json object to send
-	x={
-		"type":"seismic_sensor_reading",
-		"value":"100"
-	  }
 	if GPIO.input(channel):
-		
+		#make json object to send
+		x={
+			"type":"seismic_sensor_reading",
+			"value":"100"
+		  }
 		client.publish(topic_to_server, json.dumps(x))
+		print("data published")
 	else:
+		#make json object to send
+		x={
+			"type":"seismic_sensor_reading",
+			"value":"100"
+		  }
 		client.publish(topic_to_server, json.dumps(x))
+		print("data published")
 
 # mqtt on connect callback
 def on_connect(client, userdata, flags, rc):
