@@ -10,21 +10,8 @@ def analogInput(channel):
   adc = spi.xfer2([1,(8+channel)<<4,0])
   data = ((adc[1]&3) << 8) + adc[2]
   return data
-# Below function will convert data to voltage
-def Volts(data):
-  volts = (data * 3.3) / float(1023)
-  volts = round(volts, 2) # Round off to 2 decimal places
-  return volts
- 
-# Below function will convert data to temperature.
-def Temp(data):
-  temp = ((data * 330)/float(1023))-50
-  temp = round(temp)
-  return temp
+
 while True:
   temp_output = analogInput(0) # Reading from CH0
-  temp_volts = ConvertVolts(temp_output)
-  temp       = ConvertTemp(temp_output)
- 
-  print("Temp : {} ({}V) {} deg C".format(temp_level,temp_volts,temp))
-  sleep(5)
+  print(temp_output)
+  sleep(1)
