@@ -79,10 +79,10 @@ client.connect(server_url, server_port, 60)
 
 
 #pressure sensor gpio setup
-GPIO.setmode(GPIO.BCM)
+'''GPIO.setmode(GPIO.BCM)
 GPIO.setup(channel,GPIO.IN)
 GPIO.add_event_detect(channel,GPIO.BOTH,bouncetime=300)
-GPIO.add_event_callback(channel,pressure_callback)
+GPIO.add_event_callback(channel,pressure_callback)'''
 
 
 print("Setup complete:\n")
@@ -90,10 +90,17 @@ print("Setup complete:\n")
 # handles reconnecting.
 # Other loop*() functions are available that give a threaded interface and a
 # manual interface.
-client.loop_forever()        
+#client.loop_forever()        
 
 
-'''while True:
+while True:
   temp_output = analogInput(channel) # Reading from CH0
+  pressure_output = analogInput(channel) # Reading from CH0
+    x={
+      "type":"pressure_sensor_reading",
+      "value":pressure_output
+      }
+  client.publish(topic_to_server, json.dumps(x))
+  print("data published")
   print(temp_output)
-  sleep(1)'''
+  sleep(5)
