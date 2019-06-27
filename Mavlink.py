@@ -1,2 +1,2 @@
 import pymavlink
-print(pymavlink.__doc__)
+pymavlink.__doc__
