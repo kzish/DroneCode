@@ -1,7 +1,7 @@
 # Importing modules
 import spidev # To communicate with SPI devices
 from time import sleep  # To add delay
-
+import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
 import json
 
