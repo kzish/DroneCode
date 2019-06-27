@@ -82,7 +82,7 @@ client.connect(server_url, server_port, 60)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(channel,GPIO.IN)
 GPIO.add_event_detect(channel,GPIO.BOTH,bouncetime=300)
-GPIO.add_event_callback(channel,seismic_callback)
+GPIO.add_event_callback(channel,pressure_callback)
 
 
 print("Setup complete:\n")
