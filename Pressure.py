@@ -96,10 +96,10 @@ print("Setup complete:\n")
 while True:
   temp_output = analogInput(channel) # Reading from CH0
   pressure_output = analogInput(channel) # Reading from CH0
-    x={
-      "type":"pressure_sensor_reading",
-      "value":pressure_output
-      }
+  x={
+     "type":"pressure_sensor_reading",
+     "value":pressure_output
+    }
   client.publish(topic_to_server, json.dumps(x))
   print("data published")
   print(temp_output)
