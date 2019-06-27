@@ -1,3 +1,2 @@
-import mavlink
-print("hassan")
-
+import pymavlink
+print(pymavlink.__doc__)
