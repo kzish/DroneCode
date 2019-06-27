@@ -1,19 +1,6 @@
-import pymavlink
-import time
-from pymavlink import mavutil
+from dronekit import connect
 
-
-
-master = mavutil.mavlink_connection('udpin:127.0.0.1:14550')
-master.wait_heartbeat()
-
-master.mav.command_long_send( master.target_system,   master.target_component,
-    mavutil.mavlink.MAV_CMD_COMPONENT_ARM_DISARM,
-    0, 1, 0, 0, 0, 0, 0, 0)
-
-time.sleep(5)
-
-master.mav.command_long_send( master.target_system,  master.target_component,
-    mavutil.mavlink.MAV_CMD_NAV_TAKEOFF,
-    0, 0, 0, 0, 0, 0, 0,
-    50)
+# Connect to UDP endpoint.
+vehicle = connect('127.0.0.1:14550', wait_ready=True)
+# Use returned Vehicle object to query device state - e.g. to get the mode:
+print("Mode: %s" % vehicle.mode.name)
