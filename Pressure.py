@@ -7,7 +7,7 @@ import json
 
 channel           = 0 # the selected gpio data pin
 topic_to_server   = "drone_web_console_server"# when sending data to the server
-server_url        = "192.168.138.1"
+server_url        = "18.222.225.98"
 server_port       = 1883
 
 
@@ -103,4 +103,4 @@ while True:
   client.publish(topic_to_server, json.dumps(x))
   print("data published")
   print(temp_output)
-  sleep(5)
+  sleep(1)#tick every second

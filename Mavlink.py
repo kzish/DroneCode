@@ -8,7 +8,7 @@ import json
 #mqtt
 topic_to_server   = "drone_web_console_server"# when sending data to the server
 topic_from_server = "mavlink_drone_commands"# when recieving data from the server to seismic sensor 1
-server_url        = "192.168.138.1"
+server_url        = "18.222.225.98"
 server_port       = 1883
 
 
