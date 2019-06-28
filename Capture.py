@@ -15,7 +15,7 @@ def snap_pic_from_web_console():
         camera.capture("newpic.jpg")
         print("picture taken!")
         #now send the picture to the server
-        url = 'http://18.222.225.98:93/api/upload_image_from_pi'
+        url = 'http://192.168.138.1:5567/api/upload_image_from_pi'
         files = {'file': open('newpic.jpg', 'rb')}
         r = requests.post(url, files=files)
         print(r.text)#show the results
@@ -46,7 +46,7 @@ def on_message(client, userdata, msg):
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
-client.connect("18.222.225.98", 1883, 60)
+client.connect("192.168.138.1", 1883, 60)
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.

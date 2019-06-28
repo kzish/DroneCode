@@ -8,7 +8,7 @@ import json
 channel           = 17 # the selected gpio data pin
 topic_to_server   = "drone_web_console_server"# when sending data to the server
 topic_from_server = "server_data_to_seismic_1"# when recieving data from the server to seismic sensor 1
-server_url        = "18.222.225.98"
+server_url        = "192.168.138.1"
 server_port       = 1883
 
 # method for seismic sensor

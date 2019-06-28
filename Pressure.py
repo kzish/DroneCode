@@ -7,7 +7,7 @@ import json
 
 channel           = 0 # the selected gpio data pin
 topic_to_server   = "drone_web_console_server"# when sending data to the server
-server_url        = "18.222.225.98"
+server_url        = "192.168.138.1"
 server_port       = 1883
 
 
