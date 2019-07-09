@@ -11,7 +11,7 @@ server_port       = 1883
 
 # Create an ADXL345 instance.
 adxl345 = ADXL345()
-axes = adxl345.get_axes()
+axes = adxl345.get_axes(True)
 
 
 # mqtt on connect callback
@@ -36,17 +36,18 @@ client.connect(server_url, server_port, 60)
 print("Setup complete:\n")    
 
 while True:
+    axes = adxl345.get_axes()
     x=axes['x']
     y=axes['y']
     z=axes['z']
     json_data={
-			"type":"seismic_sensor_reading",
-			"x_value":x,
-			"y_value":y,
-			"z_value":z
-		  }
-	client.publish(topic_to_server, json.dumps(json_data))
-	print("data published")
+     "type":"seismic_sensor_reading",
+      "x_value":x,
+      "y_value":y,
+      "z_value":z
+     }
+    client.publish(topic_to_server, json.dumps(json_data))
+    print(x,y,z)
     # Wait half a second and repeat.
     time.sleep(0.25)
 

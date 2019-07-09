@@ -103,4 +103,4 @@ while True:
   client.publish(topic_to_server, json.dumps(x))
   print("data published")
   print(temp_output)
-  sleep(1)#tick every second
+  sleep(0.25)#tick every second
