@@ -3,7 +3,6 @@ from adxl345 import ADXL345
 import paho.mqtt.client as mqtt
 import json
 
-
 topic_to_server   = "drone_web_console_server"# when sending data to the server
 topic_from_server = "server_data_to_seismic_1"# when recieving data from the server to seismic sensor 1
 server_url        = "192.168.138.1"
@@ -40,7 +39,6 @@ while True:
     x=axes['x']
     y=axes['y']
     z=axes['z']
-    v=1
     json_data={
 			"type":"seismic_sensor_reading",
 			"x_value":x,
