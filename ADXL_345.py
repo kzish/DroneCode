@@ -40,6 +40,7 @@ while True:
     x=axes['x']
     y=axes['y']
     z=axes['z']
+    v=1
     json_data={
 			"type":"seismic_sensor_reading",
 			"x_value":x,
