@@ -46,8 +46,8 @@ while True:
 			"y_value":y,
 			"z_value":z
 		  }
-		client.publish(topic_to_server, json.dumps(json_data))
-		print("data published")
+	client.publish(topic_to_server, json.dumps(json_data))
+	print("data published")
     # Wait half a second and repeat.
     time.sleep(0.25)
 
